@@ -1,102 +1,58 @@
-# SocialNest – Social Media Web App
+# Frontend – SocialNest
 
-SocialNest is a full-stack social media web application built using Django REST Framework and React JS. It allows users to create accounts, share posts, and interact with content through likes.
+This folder contains the frontend of the SocialNest application, built using React JS and Vite.
+
+It provides the user interface for authentication, viewing posts, interacting with the feed, managing profiles, and creating new posts.
 
 ---
 
 ## 🚀 Features
 
-### 🔐 Authentication
-- User registration & login
-- JWT-based authentication (Access & Refresh tokens)
-- Secure backend authentication using Django REST Framework
-
-### 🏠 Home
-- Landing page after login
-- (Planned improvements for better UI and features)
-
-### 📰 Feed
-- View posts from multiple users
-- Like and dislike posts
-- Real-time data fetched from backend APIs
-
-### 👤 Profile
-- View profile (photo, name, bio)
+- User Login & Registration UI
+- JWT Authentication handling (via backend)
+- View posts from multiple users (Feed)
+- Like & Dislike posts
+- User Profile page (bio, profile photo, posts)
 - Create new posts
-- View posts created by the logged-in user
-
-### 🔄 Multi-Account Support
-- Switch between logged-in accounts
-- Add new accounts
-- Logout functionality with session handling
+- Multi-account support (switch accounts)
 
 ---
 
 ## 🛠 Tech Stack
 
-### Frontend
 - React JS
+- Vite
 - Axios
 - HTML, CSS
 
-### Backend
-- Django
-- Django REST Framework
-- JWT Authentication
-
-### Database
-- SQLite (default Django DB)
-
 ---
 
-## 📂 Project Structure
+## 📂 Folder Structure
+src/
+├── components/ → Reusable UI components
+├── pages/ → Main pages (Login, Feed, Profile)
+├── services/ → API calls (Axios)
+├── App.jsx → Main app component
+├── main.jsx → Entry point
 
-frontend/   → React application
-backend/    → Django REST API
-
----
-
-## ⚙️ Setup Instructions
-
-### 1️⃣ Clone the Repository
-git clone https://github.com/Amulya-TG/socialnest.git
-cd project-folder
-
-
-### 2️⃣ Backend Setup
-
-cd backend
-pip install requirements
-python manage.py migrate
-python manage.py runserver
-
-### 3️⃣ Frontend Setup
-cd Frontend
+## ⚙️ Setup
+cd frontend
 npm install
 npm run dev
 
----
-
-## 🔗 API Integration
-- Frontend communicates with backend using Axios
-- JWT tokens used for secure API requests
 
 ---
 
-## 🚧 Future Improvements
-- Comments system
-- Follow/Unfollow users
-- Better UI/UX design
-- Image/Videos upload optimization
-- Notifications system
-- Deployment (AWS / Vercel / Render)
+## 🔗 API Communication
+
+- Uses Axios to call Django REST APIs
+- Sends JWT tokens in requests
+- Handles authentication and protected routes
 
 ---
 
-## 📌 Project Status
-This project is in the development stage with core features implemented and more improvements planned.
+## 🚧 Improvements
 
----
-
-## 🙌 Author
-Amulya T G
+- UI enhancements
+- Add comments feature
+- Improve responsiveness
