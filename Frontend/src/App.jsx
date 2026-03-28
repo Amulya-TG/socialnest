@@ -3,6 +3,7 @@ import './App.css';
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Feed from "./pages/Feed";
+import PostDetails  from "./pages/PostDetails";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -31,6 +32,11 @@ return(
 <Feed/>
 </ProtectedRoute>
 }/>
+<Route path="/post/:id" element={
+            <ProtectedRoute>
+              <PostDetails />
+            </ProtectedRoute>
+          }/>
 
 <Route path="/profile" element={
 <ProtectedRoute>

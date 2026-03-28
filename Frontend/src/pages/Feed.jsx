@@ -1,55 +1,51 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import API from "../api/axios";
 import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
+import FeedCard from "../components/FeedCard"
 
-function Feed() {
+const Feed = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
   const fetchPosts = async () => {
     try {
+      setLoading(true);
       const res = await API.get("posts/");
       setPosts(res.data);
     } catch (error) {
       console.error("Error loading posts:", error);
+    }finally{
+      setLoading(false);
     }
   };
-
   useEffect(() => {
     fetchPosts();
   }, []);
 
-  const handleLike = async (postId) => {
-    try {
-      await API.post(`posts/like/${postId}/`);
-      fetchPosts();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <>
       <Navbar />
-      <div>
-        <h2>Feed</h2>
-        {posts.map((post) => (
-          <div key={post.id} className="feed-body">
-            <h4>{post.user}</h4>
-            {post.image && (
-              <img
-                src={post.image}
-                style={{ width: "100%", borderRadius: "8px" }}
-              />
-            )}
-            <p>{post.caption}</p>
-
-            <button onClick={() => handleLike(post.id)}>
-              ❤️ {post.likes_count} Like
-            </button>
+      <div className="feed-body">
+        {loading ? (
+          <h2>loading...</h2>
+        ):(
+          <div className="card">
+            {
+              posts.map((post)=>(
+                <FeedCard
+                  key={post.id}
+                  feed={post}
+                  onClick={()=>navigate(`/post/${post.id}`)}
+                />
+              ))
+            }
           </div>
-        ))}
+        )}
       </div>
     </>
   );
-}
+};
 
 export default Feed;
